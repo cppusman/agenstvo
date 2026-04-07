@@ -33,14 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav');
 
     if (burger && nav) {
-        burger.onclick = (e) => {
-            e.stopPropagation();
-            nav.classList.toggle('active');
-        };
+        burger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Не даем клику уйти на документ
+            burger.classList.toggle('open'); // Для анимации полосок
+            nav.classList.toggle('active'); // Для показа меню в CSS
+        });
 
-        // Закрытие при клике на ссылку
-        document.querySelectorAll('.menu a').forEach(l => {
-            l.onclick = () => nav.classList.remove('active');
+        // Закрываем при клике на любую ссылку
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                burger.classList.remove('open');
+            });
+        });
+
+        // Закрываем при клике мимо
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('active') && !nav.contains(e.target)) {
+                nav.classList.remove('active');
+                burger.classList.remove('open');
+            }
         });
     }
 });
