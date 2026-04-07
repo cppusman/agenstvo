@@ -1,0 +1,501 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  color: white;
+  background:
+    radial-gradient(circle at 20% 50%, #0a2a6c 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, #081f4d 0%, transparent 40%),
+    #020814;
+
+  overflow-x: hidden;
+}
+
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 15px 40px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 40px;
+  backdrop-filter: blur(20px);
+}
+
+.menu {
+  display: flex;
+  gap: 35px;
+}
+
+.menu a {
+  color: #aaa;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid transparent; 
+  transition: .3s;
+}
+
+.menu a:hover {
+  color: #fff;
+  border: 1px solid #2a7fff;
+  box-shadow: 0 0 10px #2a7fff;
+}
+
+
+.btn {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.join {
+  background: linear-gradient(45deg, #2a7fff, #4eaaff);
+  color: white;
+}
+
+
+.hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;      
+    padding: 120px 20px;    
+}
+
+.hero h1 {
+  font-size: 90px;
+  background: linear-gradient(45deg, #4eaaff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+    margin: 0 auto
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #aaa;
+}
+
+.hero-buttons {
+  margin-top: 40px;
+}
+
+
+.neon {
+  background: linear-gradient(45deg, #2a7fff, #4eaaff);
+  color: white;
+  box-shadow: 0 0 10px #2a7fff;
+}
+
+.neon:hover {
+  box-shadow: 0 0 25px #2a7fff;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid #2a7fff;
+  color: white;
+}
+
+.ghost:hover {
+  box-shadow: 0 0 20px #2a7fff;
+}
+
+
+.stats {
+  margin: 80px auto;
+  width: 85%;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+}
+
+.stats div {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.stats span {
+  display: block;
+  font-size: 16px;
+  color: #aaa;
+  font-weight: 700;
+}
+
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 140px;
+  padding: 150px 120px;
+}
+
+.text {
+  max-width: 600px;
+}
+
+.text h2 {
+  font-size: 60px;
+}
+
+.text span {
+  background: linear-gradient(45deg, #4eaaff, #2a7fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text p {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.text li {
+  margin: 10px 0;
+}
+
+
+.cards {
+  position: relative;
+  width: 700px;
+    height: 420px;
+}
+
+.card {
+    position: absolute;
+    width: 240px;
+    height: 320px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(25px);
+
+    box-shadow: 0 0 30px rgba(0,150,255,0.25);
+    z-index: 2;
+
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.cards.show .card {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease;
+}
+
+.cards.show .card.left {
+    transition-delay: 1s;   
+}
+
+
+.cards.show .card.right {
+    transition-delay: 1.3s;
+}
+
+.left {
+    left: 20px;
+    top: -20px; 
+}
+
+.right {
+    right: 20px;
+    top: 120px; 
+}
+
+
+.cards::before {
+    content: "";
+    position: absolute;
+
+    width: 420px;
+    height: 360px;
+
+    left: 100px;
+    top: 60px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(0,150,255,0.7);
+
+    box-shadow:
+        0 0 20px rgba(0,150,255,0.5),
+        0 0 50px rgba(0,150,255,0.3);
+    box-shadow:
+inset 0 0 25px rgba(0,150,255,0.35),
+0 0 20px rgba(0,150,255,0.5),
+0 0 50px rgba(0,150,255,0.3);
+
+    filter: blur(1px);
+
+    z-index: 1;
+    
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1s ease;
+}
+
+.cards.show::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 60% 40% 70% 50%;
+  border: 1px solid rgba(0,150,255,0.3);
+  filter: blur(8px);
+}
+
+body::before {
+  width: 700px;
+  height: 700px;
+  top: 50px;
+  left: -300px;
+  border-radius: 60% 40% 70% 50%;
+  filter: blur(12px);
+}
+
+body::after {
+  width: 650px;
+  height: 650px;
+  top: 700px;
+  right: -250px;
+  border-radius: 50% 70% 40% 60%;
+  filter: blur(12px);
+}
+
+.about::after {
+  width: 700px;
+  height: 700px;
+  left: -300px;
+  bottom: -250px;
+  border-radius: 70% 40% 60% 50%;
+  filter: blur(12px);
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+    }
+    50% {
+        border-radius: 60% 40% 50% 70% / 40% 60% 40% 60%;
+    }
+    100% {
+        border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+    }
+}
+
+.card img {
+    position: absolute;
+    height: 80%; 
+    width: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card p {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    color: white;
+    font-size: 22px;   
+    font-weight: 600;  
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- СТИЛИ БУРГЕРА (до медиа-запроса, скрыты на десктопе) --- */
+.burger-menu {
+    display: none; /* Скрыт по умолчанию */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 101; /* Поверх всего */
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* --- Класс, который JS будет вешать на .nav для открытия меню --- */
+.nav.active .menu {
+    transform: translateX(0); /* Показываем меню */
+}
+
+.nav.active .burger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav.active .burger-menu span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav.active .burger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+
+/* ========================================================
+   ================== АДАПТИВ НА ТЕЛЕФОН ==================
+   ======================================================== */
+@media (max-width: 768px) {
+    /* 1. УБИРАЕМ ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ВСЕГО САЙТА */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box !important;
+    }
+
+    /* 2. ШАПКА И БУРГЕР */
+    .nav {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 15px !important;
+        width: 100% !important;
+    }
+    
+    .nav > a:not(.btn):not(.logo a), .nav ul {
+        display: none !important;
+    }
+    
+    #burger-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 30px !important;
+        height: 20px !important;
+        z-index: 2000 !important;
+    }
+
+    /* Плашка меню */
+    .menu {
+        display: none !important;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: rgba(0, 0, 0, 0.95) !important;
+        flex-direction: column !important;
+        z-index: 1500 !important;
+    }
+    .nav.active .menu {
+        display: flex !important;
+    }
+
+    /* 3. СТАТИСТИКА (ТОЧНО ЛИСТАЕТСЯ) */
+    .stats {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* ЖЕСТКО ЗАПРЕЩАЕМ ПЕРЕНОС ВНИЗ */
+        overflow-x: auto !important; /* ВКЛЮЧАЕМ СКРОЛЛ ВПРАВО */
+        width: 100% !important;
+        padding: 20px !important;
+        gap: 30px !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    .stats div {
+        flex: 0 0 auto !important; /* Элементы не сжимаются */
+        min-width: 120px !important; /* Минимальная ширина блока цифр */
+    }
+    
+
+    /* 4. КАРТОЧКИ В СТОЛБИК (БЕЗ ИЗМЕНЕНИЯ ТЕКСТА) */
+    .about {
+        flex-direction: column !important;
+    }
+    .cards {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 50px !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+    .card {
+        width: 90% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    /* Ограничиваем картинки в карточках */
+    .card img {
+        width: 100px !important;
+        height: 100px !important;
+        object-fit: contain !important;
+        position: static !important;
+    }
+
+    /* Делаем круг меньше, чтобы он не распирал экран вправо */
+    .cards::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 250px !important;
+        height: 250px !important;
+        border: 3px solid #2a7fff !important;
+        border-radius: 50% !important;
+        z-index: 1 !important;
+    }
+
+     .hero h1 {
+        font-size: 32px !important; /* !important заставит браузер применить именно этот размер */
+    }
+}
